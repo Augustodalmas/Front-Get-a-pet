@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+//Pages
+import Home from "./components/pages/Home"
+import Login from "./components/pages/auth/Login"
+import Register from "./components/pages/auth/Register"
+
+//Components
+import Navbar from "./components/pages/layouts/Navbar"
+import Footer from "./components/pages/layouts/Footer"
+import Container from "./components/pages/layouts/Container"
+
+
+//Rotas dessa forma devido a mudança que tivemos no React Route v6
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Container>
+        <Routes>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register />}></Route>
+          <Route path="/" element={<Home />}></Route>
+        </Routes>
+      </Container>
+      <Footer />
+    </BrowserRouter>
   );
 }
 
