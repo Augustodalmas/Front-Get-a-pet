@@ -2,10 +2,14 @@ import { Link } from "react-router-dom"
 import Input from "../layouts/form/Input"
 
 import styles from "../layouts/form/form.module.css"
-import { useState } from "react"
+import { useContext, useState } from "react"
+
+//Context
+import { Context } from "../../../context/UserContext"
 
 function Register() {
     const [user, setUser] = useState({})
+    const { register } = useContext(Context)
 
     function handleCharge(e) {
         setUser({ ...user, [e.target.name]: e.target.value })
@@ -13,7 +17,7 @@ function Register() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        console.log(user)
+        register(user)
     }
 
     return (
